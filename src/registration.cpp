@@ -139,6 +139,7 @@ void RegistrationImpl::apply(const Frame *rgb, const Frame *depth, Frame *undist
       registered->width != 512 || registered->height != 424 || registered->bytes_per_pixel != 4)
     return;
 
+  std::cout << "Large apply made through." << std::endl;
   const float *depth_data = (float*)depth->data;
   const unsigned int *rgb_data = (unsigned int*)rgb->data;
   float *undistorted_data = (float*)undistorted->data;
