@@ -31,6 +31,7 @@
 #include <libfreenect2/registration.h>
 #include <limits>
 
+#include <stdio.h>
 namespace libfreenect2
 {
 
@@ -112,6 +113,7 @@ void Registration::apply( int dx, int dy, float dz, float& cx, float &cy) const
 
 void RegistrationImpl::apply( int dx, int dy, float dz, float& cx, float &cy) const
 {
+  std::cout << "Small apply used." << std::endl;
   const int index = dx + dy * 512;
   float rx = depth_to_color_map_x[index];
   cy = depth_to_color_map_y[index];
@@ -127,6 +129,7 @@ void Registration::apply(const Frame *rgb, const Frame *depth, Frame *undistorte
 
 void RegistrationImpl::apply(const Frame *rgb, const Frame *depth, Frame *undistorted, Frame *registered, const bool enable_filter, Frame *bigdepth, int *color_depth_map) const
 {
+  std::cout << "Large apply used." << std::endl;
   // Check if all frames are valid and have the correct size
   if (!rgb || !depth || !undistorted || !registered ||
       rgb->width != 1920 || rgb->height != 1080 || rgb->bytes_per_pixel != 4 ||
