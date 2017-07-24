@@ -31,7 +31,8 @@
 #include <libfreenect2/registration.h>
 #include <limits>
 
-#include <stdio.h>
+#include <iostream>
+
 namespace libfreenect2
 {
 
