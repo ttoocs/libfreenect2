@@ -10,7 +10,7 @@ url="http://openkinect.org"
 license=(Apache GPL)
 depends=(libusb glfw turbojpeg ocl-icd)
 makedepends=(cmake opencl-headers)
-source=("git+https://github.com/ttoocs/libfreenect2.git")
+source=("git+https://github.com/ttoocs/libfreenect2.git#branch=debugging")
 sha512sums=(SKIP)
 
 prepare() {
