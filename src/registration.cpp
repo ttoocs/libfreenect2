@@ -111,10 +111,9 @@ void Registration::apply( int dx, int dy, float dz, float& cx, float &cy) const
 {
   impl_->apply(dx, dy, dz, cx, cy);
 }
-
+//libfreenect2::RegistrationImpl::apply
 void RegistrationImpl::apply( int dx, int dy, float dz, float& cx, float &cy) const
 {
-  std::cout << "Small apply used." << std::endl;
   const int index = dx + dy * 512;
   float rx = depth_to_color_map_x[index];
   cy = depth_to_color_map_y[index];
@@ -130,7 +129,6 @@ void Registration::apply(const Frame *rgb, const Frame *depth, Frame *undistorte
 
 void RegistrationImpl::apply(const Frame *rgb, const Frame *depth, Frame *undistorted, Frame *registered, const bool enable_filter, Frame *bigdepth, int *color_depth_map) const
 {
-  std::cout << "Large apply used." << std::endl;
   // Check if all frames are valid and have the correct size
   if (!rgb || !depth || !undistorted || !registered ||
       rgb->width != 1920 || rgb->height != 1080 || rgb->bytes_per_pixel != 4 ||
@@ -140,7 +138,6 @@ void RegistrationImpl::apply(const Frame *rgb, const Frame *depth, Frame *undist
     return;
 
   
-  std::cout << "Large apply made through." << std::endl;
   const float *depth_data = (float*)depth->data;
   const unsigned int *rgb_data = (unsigned int*)rgb->data;
   float *undistorted_data = (float*)undistorted->data;
